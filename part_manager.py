@@ -75,6 +75,9 @@ scrollbar.configure(command=parts_list.yview)
 app.title('Part Manager')
 app.geometry('700x350')
 
+#Populate data
+populate_list()
+
 
 #Start program
 app.mainloop()
