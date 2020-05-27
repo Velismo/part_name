@@ -1,11 +1,20 @@
 from tkinter import *
+from db import Database
+
+db = Database('store.db')
+
+
 
 #Create the functions to use in the bottons
 def populate_list():
-    print('Populate List')
+    parts_list.delete(0, END)    
+    for row in db.fetch():
+        parts_list.insert(END, row)
 
 def add_item():
-    print('Add')
+    db.insert(part_text.get(), customer_text.get(), retailer_text.get(), price_text.get())
+    parts_list.delete(0, END)
+    parts_list.insert(END, (part_text.get(), customer_text.get(), retailer_text.get(), price_text.get()))
 
 def remove_item():
     print('Remove')
@@ -48,7 +57,7 @@ price_entry = Entry(app, textvariable=price_text)
 price_entry.grid(row=1, column=3)
 
 #Parts list(Listbox)
-parts_list = Listbox(app, height=8, width=50, border=0)
+parts_list = Listbox(app, height=8, width=60, border=0)
 parts_list.grid(row=3, column=0, columnspan=3, rowspan=6, pady=20, padx=20)
 
 #Create scrollbar
