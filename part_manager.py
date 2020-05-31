@@ -43,7 +43,11 @@ def update_item():
     print('Update')
 
 def clear_text():
-    print('Clear')
+    part_entry.delete(0, END)
+    customer_entry.delete(0, END)
+    retailer_entry.delete(0, END)
+    price_entry.delete(0, END)
+
 
 #Create window object
 app = Tk()
