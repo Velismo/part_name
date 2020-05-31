@@ -124,4 +124,3 @@ populate_list()
 
 #Start program
 app.mainloop()
-
