@@ -21,6 +21,9 @@ def add_item():
     parts_list.insert(END, (part_text.get(), customer_text.get(), retailer_text.get(), price_text.get()))
     populate_list()
 
+def select_item(event):
+    print('select')
+
 def remove_item():
     print('Remove')
 
@@ -85,6 +88,9 @@ clear_btn.grid(row=2, column=3)
 #Set scroll to listbox
 parts_list.configure(yscrollcommand=scrollbar.set)
 scrollbar.configure(command=parts_list.yview)
+
+#Bind select
+parts_list.bind('<<ListboxSelect>>', select_item)
 
 app.title('Part Manager')
 app.geometry('700x350')
